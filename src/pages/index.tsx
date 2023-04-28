@@ -1,8 +1,9 @@
-import { Button } from '@/components/atoms'
 import { getHomeData } from '@/services/getHomeData.service'
+import { GetStaticProps } from 'next'
+
+import Card from '@/components/molecules/Card'
 
 import type { Data } from '../services/getHomeData.service'
-import Card from '@/components/molecules/Card'
 
 const Main = ({ data }: { data: Data }) => {
   return (
@@ -20,7 +21,7 @@ const Main = ({ data }: { data: Data }) => {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
   const data = await getHomeData()
 
   return {
